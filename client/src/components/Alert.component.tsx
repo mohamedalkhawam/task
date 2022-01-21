@@ -22,16 +22,14 @@ function Alert(props: any) {
   return (
     <div
       role="alert"
-      className={`flex ${
-        downloadTimer < 1 ? "slide-out" : "slide-in"
-      }  dark:bg-neutral-700 bg-neutral-700 my-1 items-center w-full h-12 p-3 text-gray-100 relative  rounded-md`}
+      className={` ${downloadTimer < 1 ? "slide-out" : "slide-in"} alert `}
     >
-      <h2 className="font-mono text-xs text-gray-100">{props.alert.message}</h2>
+      <h2 className="alert__message">{props.alert.message}</h2>
       <div
-        className={`h-2 transition-all ease-in-out duration-1000 w-full absolute bottom-0 appearance-none left-0 right-0 ${
+        className={`alert__timeProgress ${
           props.alert.status === "error"
-            ? "dark:bg-red-400 bg-red-500"
-            : "dark:bg-green-300 bg-green-400"
+            ? "alert__timeProgress__error"
+            : "alert__timeProgress__success"
         } `}
         style={{ width: `${downloadTimer * 20}%` }}
         id={`progressBar-${props.alert.id}`}
@@ -39,17 +37,13 @@ function Alert(props: any) {
       ></div>
       <button
         aria-label="close alert"
-        className="absolute text-sm text-gray-100 cursor-pointer top-1 right-1"
+        className="alert__btn__close"
         onClick={() => dispatch(removeAlert(props.alert.id))}
       >
         <MdClose />
       </button>
       {downloadTimer < 9 && (
-        <span
-          className={`absolute bottom-0 text-xs cursor-pointer right-1 text-white`}
-        >
-          {downloadTimer}
-        </span>
+        <span className={`alert__countdown`}>{downloadTimer}</span>
       )}
     </div>
   );
@@ -63,7 +57,7 @@ const Alerts = () => {
   return (
     <div
       style={{ zIndex: 9999 }}
-      className={`fixed z-20 overflow-hidden overflow-y-auto top-10 right-3 w-72 ${
+      className={` alert__container ${
         alertReducer.filter((alert: any) => alert.priority === "high").length >
         0
           ? ""

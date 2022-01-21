@@ -3,7 +3,7 @@ const initialState: { isDarkMode: boolean } = {
   isDarkMode: false,
 };
 function appReducer(state = initialState, action: { type: any; payload: any }) {
-  const { type, payload } = action;
+  const { type } = action;
 
   switch (type) {
     case TOGGLE_DARK_MODE:

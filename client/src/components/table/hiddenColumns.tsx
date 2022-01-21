@@ -19,7 +19,7 @@ export default function hiddenColumns({ columns }: Props) {
       >
         {columns.map((column: Column) => (
           <li
-            key={column.accesor}
+            key={column.accessor}
             onClick={() => column.toggle()}
             className={` flex justify-between items-center cursor-pointer px-3 py-1.5 border-b text-xs sm:text-sm text-gray-600 font-semibold  hover:bg-gray-100 `}
           >

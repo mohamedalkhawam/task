@@ -1,4 +1,4 @@
-import { ToggleDarkMode } from "redux/actions/app";
+import { toggleDarkMode } from "redux/actions/app";
 import { useDispatch, useSelector } from "react-redux";
 export default function DarkModeSwitch({}) {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ export default function DarkModeSwitch({}) {
         {isDarkMode && (
           <button
             aria-label="Light mode"
-            onClick={() => dispatch(ToggleDarkMode())}
+            onClick={() => dispatch(toggleDarkMode())}
           >
             Light
           </button>
@@ -29,7 +29,7 @@ export default function DarkModeSwitch({}) {
         {!isDarkMode && (
           <button
             aria-label="Dark mode"
-            onClick={() => dispatch(ToggleDarkMode())}
+            onClick={() => dispatch(toggleDarkMode())}
           >
             Dark
           </button>

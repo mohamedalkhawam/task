@@ -8,6 +8,20 @@ type PropsType = {
 };
 export default function TableFooter({ goTo, totalpages }: PropsType) {
   const [currentPage, setCurrentpage] = useState<number>(1);
+  const canGoNext = (): boolean => {
+    if (currentPage < totalpages) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  const canGoPrev = (): boolean => {
+    if (currentPage - 1 > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  };
   return (
     <section
       aria-label="table footer"
@@ -33,11 +47,12 @@ export default function TableFooter({ goTo, totalpages }: PropsType) {
       <div className="flex items-center gap-2 mx-auto text-gray-600 dark:text-gray-300 font-semibold ">
         <Button
           onClick={() => {
-            if (currentPage - 1 > 0) {
+            if (canGoPrev()) {
               goTo(currentPage - 1);
               setCurrentpage(currentPage - 1);
             }
           }}
+          disabled={!canGoPrev()}
           aria-label="Previous Page"
           icon={
             <div className=" text-gray-600 dark:text-gray-300  text-xl font-bold  ">
@@ -52,18 +67,19 @@ export default function TableFooter({ goTo, totalpages }: PropsType) {
         <p>{totalpages}</p>
         <Button
           onClick={() => {
-            if (currentPage + 1 <= totalpages) {
+            if (canGoNext()) {
               goTo(currentPage + 1);
               setCurrentpage(currentPage + 1);
             }
           }}
+          disabled={!canGoNext()}
           icon={
             <div className=" text-gray-600 dark:text-gray-300 text-xl font-bold  ">
               <MdNavigateNext className=" " />
             </div>
           }
           aria-label="Next Page"
-          className=" dark:bg-neutral-800 bg-gray-300  py-2 w-6 px-2"
+          className=" dark:bg-neutral-800 bg-gray-300  py-2 w-6 px-2 "
         />
       </div>
     </section>

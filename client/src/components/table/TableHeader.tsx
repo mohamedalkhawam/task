@@ -11,7 +11,7 @@ export default function TableHeader({ columns, actionColumnTitle }: Props) {
           {columns.map((item: Column) => (
             <th
               className=" text-left dark:text-gray-300 text-gray-600 text-xs sm:text-sm lg:text-lg "
-              key={item.accesor}
+              key={item.accessor}
               hidden={!item.isVisible}
             >
               {item.title}

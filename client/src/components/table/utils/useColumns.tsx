@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Column, ObjectColumn } from "../../../types/table/table";
+import { Column, ObjectColumn } from "types/table/table";
 export default function useColumns(columnObject: ObjectColumn[]): Column[] {
   const [columns, setColumns] = useState<Column[]>(
     columnObject.map((item) => ({
@@ -12,7 +12,7 @@ export default function useColumns(columnObject: ObjectColumn[]): Column[] {
         this.isVisible = !this.isVisible as true;
         setColumns(
           columns.filter((item) =>
-            item.accesor === this.accesor
+            item.accessor === this.accessor
               ? { ...item, isVisible: this.isVisible }
               : item
           )

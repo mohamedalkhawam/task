@@ -23,9 +23,7 @@ export default function Table({
 }: Props) {
   const columns = useColumns(tableColumns);
   return (
-    <div
-      className={` w-full overflow-hidden bg-white dark:bg-[#121212] px-2 sm:px-4 rounded-md shadow-md hover:shadow-lg my-10 dark:border-gray-800 border`}
-    >
+    <div className={` table__container `}>
       <div className="w-full flex items-center justify-between py-4">
         <DarkModeSwitch />
         <HiddenColumns columns={columns} />

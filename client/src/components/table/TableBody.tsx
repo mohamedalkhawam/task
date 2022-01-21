@@ -7,7 +7,7 @@ type Props = {
 export default function TableBody({ columns, data = [], tableActions }: Props) {
   const checkHidden = (key: string): boolean => {
     return (
-      columns.find((column: Column) => column.accesor === key)?.isVisible !==
+      columns.find((column: Column) => column.accessor === key)?.isVisible !==
       true
     );
   };
